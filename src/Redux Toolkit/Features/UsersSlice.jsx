@@ -4,7 +4,7 @@ const user ={
     name : 'zouir',
     prenom :'amrani',
     age:23,
-    country:'MA'
+    country:'ma'
 }
 // daba hna kan9smo les action li3dna fkola component  matalan (add delete update) f reducers kanhto tretmont dyal kola action 
  const userSlice =createSlice(
