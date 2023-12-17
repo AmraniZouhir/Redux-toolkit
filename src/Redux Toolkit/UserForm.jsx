@@ -1,51 +1,73 @@
-import React from 'react'
+
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 export default function UserForm() {
-  return (
-    <>
-    <div className="container">
-            <div className="d-grid gap-2 d-flex justify-content-center mb-5">
-                <button type="button" className="btn btn-primary btn-lg px-4 me-sm-3" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">Update your profile
-                </button>
-                <button type="button" className="btn btn-outline-danger btn-lg px-4" onClick={resetUserCallback}>Delete
-                    Your profile
-                </button>
+    const [showModal, setShowModal] = useState(false);
+
+    const handleShow = () => setShowModal(true);
+    const handleClose = () => setShowModal(false);
+    const deletUser = (e) => {
+        e.preventDefault()
+        alert("User change")
+    }
+    const handleSaveChanges = () => {
+           
+            handleClose();
+          }
+        
+
+    return (
+        <>
+            <div className="container">
+                <div className="d-grid gap-2 d-flex justify-content-center mb-5">
+                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" onClick={handleShow}>
+                        Launch demo modal
+                    </button>
+                    <button type="button" className="btn btn-outline-danger btn-lg px-4" data-bs-toggle="modal" onClick={deletUser}>Delete
+                        Your profile
+                    </button>
+                </div>
             </div>
-        </div>
 
 
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Update user</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                        <form>
+
+
+            <div className={`modal fade ${showModal ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: showModal ? 'block' : 'none' }}>
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Update user</h5>
+                            <button type="button" className="btn-close" onClick={handleClose} aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
                             <div className="mb-3 row">
                                 <label htmlFor="fullName" className="col-sm-2 col-form-label">Name</label>
                                 <div className="col-sm-10">
                                     <input type="text" className="form-control" id="fullName" name="fullName"
-                                           defaultValue={user?.name} ref={name}/>
+                                    />
                                 </div>
                             </div>
+                            <div className="mb-3 row">
+                                <label htmlFor="fullName" className="col-sm-2 col-form-label">Prenom</label>
+                                <div className="col-sm-10">
+                                    <input type="text" className="form-control" id="fullPrenom" name="fullPrenom"
+                                    />
+                                </div>
+                            </div>
+
                             <div className="mb-3 row">
                                 <label htmlFor="age" className="col-sm-2 col-form-label">Age</label>
                                 <div className="col-sm-10">
                                     <input type="number" className="form-control" id="age" name="age"
-                                           defaultValue={user?.age} ref={age}/>
+                                    />
                                 </div>
                             </div>
                             <div className="mb-3 row">
                                 <label htmlFor="country" className="col-sm-2 col-form-label">Country</label>
                                 <div className="col-sm-10">
-                                    <select id='country' name='country' className="form-select" ref={country}
-                                            defaultValue={user?.country}>
+                                    <select id='country' name='country' className="form-select"
+                                    >
                                         <option value=''>Select your country</option>
                                         <option value="ma">Morocco</option>
                                         <option value="dz">Algeria</option>
@@ -53,18 +75,24 @@ export default function UserForm() {
                                     </select>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-primary" onClick={handleSubmit}
-                                data-bs-dismiss="modal">Update user
-                        </button>
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-primary" onClick={handleSaveChanges} data-bs-dismiss="modal">
+                                Save changes
+                            </button>                            
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleClose}>Close</button>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-    </>
-  )
+        </>
+    );
 }
+
+
+
+
+
+
+

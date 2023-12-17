@@ -13,10 +13,6 @@ export default function Users() {
           <p className="lead mb-4">
             <img src={`https://flagcdn.com/48x36/${user.country}.png`} />
           </p>
-          <div className='d-grid gap-2 d-flex justify-content-center mb-5'>
-            <button type='button' className='btn btn-primary btn-lg px-4 me-sm-3'>Update Your profile</button>
-            <button type='button' className='btn btn-outline-danger btn-lg px-4'>Delete Your profile</button>
-          </div>
         </div>
       </div>
     </>
