@@ -11,16 +11,24 @@ const user ={
     {
         name:'user',
         initialState:user,
-        reducers:{
-            user:{
+        reducers:{       
                 resetUser:(state)=>{
-
+                    state.name =undefined
+                    state.prenom =undefined
+                    state.age =undefined
+                    state.country =undefined
                 },
-                updateUser:(state)=>{
-                    
+                updateUser:(state , action)=>{
+                    console.log(state,action)
+                    const {name , prenom ,age ,country} =action.payload
+                    state.name =name
+                    state.prenom =prenom
+                    state.age =age
+                    state.country =country
                 }
-            }
+            
         }
     }
-)
+ )
+export const {resetUser,updateUser} =userSlice.actions
 export default userSlice.reducer

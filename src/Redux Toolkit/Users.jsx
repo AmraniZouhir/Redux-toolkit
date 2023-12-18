@@ -7,14 +7,26 @@ export default function Users() {
   const user = useSelector(selector)
   return (
     <>
+
       <div className='px-4 pt-5 my-5 text-center border-bottom'>
-        <h1 className="display-4 fw-bold">{user.name} {user.prenom} ({user.age} years)</h1>
+        <h1 className="display-4 fw-bold">
+          {user.name ? `Name: ${user.name}` : 'Name: N/A'}{' '}
+          {user.prenom ? `Prenom: ${user.prenom}` : 'Prenom: N/A'}{' '}
+          {user.age ? `(${user.age} years)` : '(Age not available)'}
+        </h1>
+
         <div className="mx-auto">
           <p className="lead mb-4">
-            <img src={`https://flagcdn.com/48x36/${user.country}.png`} />
+            {user.country ? (
+              <img src={`https://flagcdn.com/48x36/${user.country}.png`} alt={user.country} />
+            ) : (
+              <div>Default Flag</div>
+            )}
           </p>
+
         </div>
       </div>
+
     </>
   )
 }
